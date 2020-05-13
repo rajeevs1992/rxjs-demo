@@ -1,0 +1,24 @@
+<div *ngIf="message" class="alert alert-success" role="alert">
+    {{ message }}
+  </div>
+<form class="form" (ngSubmit)="onSave()" [formGroup]="heightForm">
+    <div>
+        <label>
+            Height:
+            <input class="form-control" type="numner" formControlName="height">
+        </label>
+    </div>
+    <div>
+        <label>
+            When:
+            <input type="date" class="form-control" formControlName="when">
+        </label>
+    </div>
+    <div>
+        <label>
+            Comments:
+            <input type="text" class="form-control" formControlName="comments">
+        </label>
+    </div>
+    <button class="btn btn-primary" type="submit" [disabled]="!heightForm.valid">Submit</button>
+</form>

@@ -1,0 +1,18 @@
+<div class="header">
+    <div>
+        <label>
+            Language : <select class="form-control" #lang (change)="onLanguageSelect(lang.value)">
+                <option [value]="locale.code" *ngFor="let locale of locales">{{ locale.name }}</option>
+            </select>
+        </label>
+    </div>
+    <div>
+        <label>
+            Record : <select class="form-control" #record (change)="onRecordSelect(record.value)">
+                <option [value]="record.id" *ngFor="let record of records">{{ record.name }}</option>
+            </select>
+        </label>
+    </div>
+    <button class="btn btn-info" (click)="showProfile=!showProfile">View Profile</button>
+    <app-view-profile *ngIf="showProfile"></app-view-profile>
+</div>

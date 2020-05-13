@@ -1,0 +1,23 @@
+<div class="height-table">
+    <!-- Locale: {{ locale }} -->
+    <div class="alert alert-light" role="alert" *ngIf="record && data && data.length">
+        Height entries for {{ record.name }}
+    </div>
+    <table class="table" *ngIf="data && data.length">
+        <tr>
+            <th>ID</th>
+            <th>Height</th>
+            <th>Date</th>
+            <th>Comments</th>
+        </tr>
+        <tr *ngFor="let height of data">
+            <td>{{ height.id }}</td>
+            <td>{{ height.height }}</td>
+            <td>{{ height.when|date }}</td>
+            <td>{{ height.comments }}</td>
+        </tr>
+    </table>
+    <div class="alert alert-light" role="alert" *ngIf="!data || !data.length">
+        No height entries for  {{ record.name }}
+    </div>
+</div>
