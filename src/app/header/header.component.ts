@@ -25,6 +25,7 @@ export class HeaderComponent extends ComponentBase implements OnInit {
     });
 
     this.recordService.getAllRecords().subscribe((records) => {
+      this.recordService.setSelectedRecord(records[0].id);
       this.records = records;
     });
   }

@@ -9,8 +9,8 @@ RxJS has become an intricate part of our angular code and hence an important too
 We will cover the following basics in this session
 
 - Observables and subscriptions
+- Unsubscribe
 - Subject vs BehaviourSubject vs ReplaySubject
-- flatMap vs switchMap
-- map
-- combineLatest
-- 
+- flatMap vs switchMap vs combineLatest
+- map 
+- first

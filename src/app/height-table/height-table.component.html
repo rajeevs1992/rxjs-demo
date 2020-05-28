@@ -18,6 +18,7 @@
         </tr>
     </table>
     <div class="alert alert-light" role="alert" *ngIf="!data || !data.length">
-        No height entries for  {{ record.name }}
+        <ng-container *ngIf="record">No height entries for  {{ record.name }}</ng-container>
+        <ng-container *ngIf="!record">No record selected.</ng-container>
     </div>
 </div>

@@ -16,10 +16,14 @@ export class ViewProfileComponent extends ComponentBase implements OnInit {
   public record: Record;
 
   ngOnInit() {
-    this.recordService.selectedRecord$.subscribe((record) => {
+    let sub = this.recordService.selectedRecord$.subscribe((record) => {
       console.log("ViewProfileComponent");
       this.record = record;
-    })
+    });
+    this.addSubscription(sub);
+  }
+  ngOnDestroy(){
+    super.ngOnDestroy();
   }
 
 }

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RecordService } from '../services/record.service';
-import { flatMap } from 'rxjs/operators';
+import { flatMap, switchMap, first } from 'rxjs/operators';
 import { DataStoreService } from '../services/data-store.service';
 import { ComponentBase } from '../services/component-base';
+import { Record } from '../services/record.service';
 
 @Component({
   selector: 'app-height-form',
@@ -23,16 +24,18 @@ export class HeightFormComponent extends ComponentBase implements OnInit {
   });
 
   message = "";
-
+  private record: Record;
   ngOnInit() {
+    this.recordService.selectedRecord$
+      .subscribe(record => {
+        this.record = record;
+      })
   }
 
   onSave() {
-    let sub = this.recordService.selectedRecord$
+    let sub = this.dataStoreService.addToStore(this.record.id, this.heightForm.value)
       .pipe(
-        flatMap(record => {
-          return this.dataStoreService.addToStore(record.id, this.heightForm.value);
-        })
+        first()
       )
       .subscribe((res) => {
         this.message = `Height entry with value ${res.height} saved!`;

@@ -26,14 +26,14 @@ export class DataStoreService {
     if (!dataStore[recordid]) {
       dataStore[recordid] = [];
     }
-    height.id = dataStore[recordid].length + 1;
+    height.id = +(recordid + "" + (dataStore[recordid].length + 1));
     dataStore[recordid].push(height);
     localStorage.setItem("DATASTORE", JSON.stringify(dataStore));
     return of(height);
   }
 
   public getData(recordid: number) {
-    console.log("DataStoreService:Getdata")
+    //console.log("DataStoreService:Getdata")
     let dataStore: any = localStorage.getItem("DATASTORE");
     if (dataStore) {
       dataStore = JSON.parse(dataStore);

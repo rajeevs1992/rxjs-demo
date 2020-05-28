@@ -23,7 +23,7 @@ export class RecordService {
   }
 
 
-  private _selectedRecord: Subject<Record> = new Subject();
+  private _selectedRecord: ReplaySubject<Record> = new ReplaySubject(1);
   public selectedRecord$ = this._selectedRecord.asObservable();
 
   public getAllRecords(): Observable<Record[]> {
